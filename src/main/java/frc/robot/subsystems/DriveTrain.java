@@ -9,42 +9,39 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.oo;
 
 
-public class YES extends SubsystemBase {
+//TankDrive with two traditional joysticks 
+public class DriveTrain extends SubsystemBase {
   /**
-   * Creates a new YES.
+   * Creates a new DriveTrain.
    */
   private final TalonSRX left = new TalonSRX(2);
   private final TalonSRX right = new TalonSRX(3);
-  private static YES yes;
+  private static DriveTrain drive;
   private Joystick leftJoy;
   private Joystick rightJoy;
   
-  public YES() {
+  public DriveTrain() {
     leftJoy = new Joystick(2);
     rightJoy = new Joystick(3);
-
-    //this.setDefaultCommand(new oo());
   }
-  public static YES getYes() {
-    if (yes == null) {
-      yes = new YES();
+  //grabs instance of DriveTrain to be used in commands 
+  public static DriveTrain getDrive() {
+    if (drive == null) {
+      drive = new DriveTrain();
     }
-    return yes;
+    return drive;
   }
   public void tankDrive(double l, double r) {
-    left.set(ControlMode.PercentOutput, l);
+    left.set(ControlMode.PercentOutput, -l); //inverted left wheels on DeepSpace, change as needed for other chassis
     right.set(ControlMode.PercentOutput, r);
   }
-
   @Override
   public void periodic() {
-    tankDrive(leftJoy.getRawAxis(1), leftJoy.getRawAxis(5));
+    tankDrive(leftJoy.getY(), rightJoy.getY());
     // This method will be called once per scheduler run
   }
 }
