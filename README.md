@@ -2,29 +2,25 @@
 
 ## Structure (Branches)
 
-| Branch Name                   | Branch Description                                    |
-| ----------------------------- | ----------------------------------------------------- |
-| master                        | Most current working code at any given point of time. |
-| [autonomous](tree/autonomous) |                                                       |
-| ball_scorer                   |                                                       |
-| control_wheel                 |                                                       |
-| end_game                      |                                                       |
-| integrated_robot              |                                                       |
+| Branch Name      | Branch Description                                           |
+| ---------------- | ------------------------------------------------------------ |
+| master           | Most current working code at any given point of time. Integrates working features from all other branches. |
+| autonomous       | Code that operates the robot autonomously for the first 15 seconds of the match, will depend on subsystems from  the other branches. |
+| ball_scorer      | Code that operates the ball scoring subsystem functionalities. |
+| control_wheel    | Code that operates the control wheel spinner.                |
+| end_game         | Code that operates the hanging feature during end game.      |
+| integrated_robot | Includes all drive station code.                             |
 
-Insert a high level description of what this system is attempting to do, but be detailed about it. Think of it like your module’s software “playbook” (like in football). For example, an autonomous description could be:
+## High Level Software Plan
 
-> During the 15 second autonomous period, we plan to move past the auto starting line, move through our alliance trench, and score the three on-board balls into the hole. We plan to account for three different starting robot configurations (left, center, and right).
+> TODO: **@DanielRyu** will fill this out based on discussions from the Software Solutions meeting on 1/11/2020
 
-## Procedure
+## Specific Software Plans
 
-Describe with more detail exactly how the high level requirement will be executed. Include implementation details, like which algorithms you will be using, what sensors you will be accessing. For example, a description of an autonomous winch operation could be:
-
-> The winch will be directly controlled by the teleoperated driver using the Joystick #3. We will map the vertical position of the joystick to the winch’s rotation velocity. To ensure the winch is stable, but we do not stall the motor, we will monitor the current that the motor draws dynamically. If the current drawn surpasses a specific threshold, the power to the motor will be reduced/cut off.
-
-## Timeline/Details
-
-Again this a sample, but this is what it would like for the same example as the last:
-
-- [x] **1/7/2020** - Create the software documentation markdown page.
-- [ ] **1/9/2020** - Acquire data from the motor controller that specifies how much current a specific motor is drawing
-- [ ] **1/15/2020** - Implement and test velocity control PID
+| Subsystem Group Plans                   |
+| --------------------------------------- |
+| [autonomous](autonomous.md)             |
+| [ball_scorer](ball_scorer.md)           |
+| [control_wheel]()                       |
+| [end_game](end_game.md)                 |
+| [integrated_robot](integrated_robot.md) |
