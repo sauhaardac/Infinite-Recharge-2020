@@ -36,7 +36,7 @@ public class DriveTrain extends SubsystemBase {
     return drive;
   }
   public void tankDrive(double l, double r) {
-    left.set(ControlMode.PercentOutput, -l); //inverted left wheels on DeepSpace, change as needed for other chassis
+    left.set(ControlMode.PercentOutput, l);
     right.set(ControlMode.PercentOutput, r);
   }
   @Override
